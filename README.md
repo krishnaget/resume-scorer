@@ -122,3 +122,41 @@ Gemini invented a complete fake resume "John Doe" from an empty string input. Fi
 - Added food outlier (butter chicken) — landed visibly far from all syllabus paragraphs
 
 **Reflection:** Semantic search returns nearest, not exact. High distance = low relevance. RAG must enforce citations to catch out-of-corpus queries — if the answer isn't in the corpus, the system should say "I don't know" not hallucinate.
+
+
+
+
+
+---
+
+## Day 7 — Capstone Sprint 2: PlacementKnowledgeRAG
+
+### Engineer Answer
+
+1. **PROBLEM** — Frontier LLMs do not know your private data (JDs, syllabi). Students need a chatbot that answers from YOUR placement corpus, with citations they can verify.
+
+2. **ARCHITECTURE** — 5-box RAG: embed (MiniLM 384-dim) → index (ChromaDB persistent collection with metadata) → retrieve (top-4 cosine similarity) → augment (citation-enforcing prompt) → generate (Gemini 2.5 Flash).
+
+3. **TRADE-OFFS** —
+   - Cost: free (MiniLM local + Gemini quota).
+   - Accuracy: top-4 retrieval works well for in-corpus queries.
+   - Latency: ~1-2s retrieval + 2-5s Gemini.
+   - Complexity: chunking strategy needs tuning per corpus.
+   - Caveat: refuses out-of-corpus queries only when prompt strictly enforces "do not guess".
+
+4. **SCALE** —
+   - 9 docs (today): trivial. ChromaDB returns in <100ms.
+   - 5K docs: still fine on one machine.
+   - 1M docs: need HNSW indexing or move to Pinecone/Weaviate.
+
+5. **INTERVIEW ANSWER** — "I built a citation-enforcing RAG over placement docs (JDs + syllabi) using free MiniLM embeddings, ChromaDB, and Gemini. The system either cites a specific chunk or refuses — no hallucinated answers."
+
+### 5 cited Q&A pairs
+
+| # | Question | Answer (excerpt) | Sources cited |
+|---|----------|------------------|---------------|
+| 1 | Which companies want Python skills? | I do not know | (not in corpus) |
+| 2 | What are the Sem 5 OS topics? | Process management, threads, scheduling... | cse_sem5_0 |
+| 3 | Which jobs are in Hyderabad? | Software Dev Engineer II, Salesforce Developer | jd_1, jd_3 |
+| 4 | Must have skills for Salesforce Developer? | Salesforce development, Force.com, APEX... | jd_1 |
+| 5 | What is TCS Codevita? | I do not know | (not in corpus) |
