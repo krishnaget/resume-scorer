@@ -46,3 +46,28 @@
 1. **API:** for low-volume, occasional calls. Avoids download. Cold-start risk on first call after idle.
 2. **Local:** for batch processing 100+ items, where you want predictable latency and don't pay per call.
 3. **Production rule of thumb:** if your usage exceeds the API free tier, self-host. Otherwise API.
+
+
+
+
+---
+
+## Day 6 Lab 6A — Gemini Structured Output
+
+### What it does
+Extracts structured JSON from raw resume text using Gemini + Pydantic schema validation.
+
+### Models used
+- `gemini-2.5-flash` — structured JSON extraction with response_schema
+
+### Errors handled
+
+1. **Markdown fence wrapping** — retry prompt forces raw JSON output.
+2. **Missing optional fields** — `Optional[str] = None` in Pydantic handles null phone numbers.
+3. **Empty / whitespace input** — input validation blocks requests shorter than 50 chars.
+
+### Hallucination finding
+Gemini invented a complete fake resume "John Doe" from an empty string input. Fix: validate input before sending to LLM — minimum length and email pattern check.
+
+### Result
+5/5 resumes extracted successfully with correct name, skills, education and experience fields.
