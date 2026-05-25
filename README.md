@@ -104,3 +104,21 @@ Gemini invented a complete fake resume "John Doe" from an empty string input. Fi
 - `jds.jsonl` — output of this sprint, input for Day 7 RAG
 
 ### Pair: Naveen
+
+
+
+
+---
+
+## Day 7 Lab 7A — ChromaDB Hello-World
+
+- Embedded 7 CSE Sem 5 paragraphs with all-MiniLM-L6-v2 (384-dim, free, local)
+- Indexed in persistent ChromaDB collection `hello_syllabus`
+- Ran 3 semantic queries — observed:
+  - "operating system processes" → dist 0.713 → correct match (topic in corpus)
+  - "dynamic programming" → dist 1.464 → wrong match (topic NOT in corpus)
+  - "machine learning topics" → dist 1.300 → wrong match (topic NOT in corpus)
+- Plotted PCA 2D — visible clusters by subject area
+- Added food outlier (butter chicken) — landed visibly far from all syllabus paragraphs
+
+**Reflection:** Semantic search returns nearest, not exact. High distance = low relevance. RAG must enforce citations to catch out-of-corpus queries — if the answer isn't in the corpus, the system should say "I don't know" not hallucinate.
