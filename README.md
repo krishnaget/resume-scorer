@@ -155,8 +155,13 @@ Gemini invented a complete fake resume "John Doe" from an empty string input. Fi
 
 | # | Question | Answer (excerpt) | Sources cited |
 |---|----------|------------------|---------------|
-| 1 | Which companies want Python skills? | I do not know | (not in corpus) |
-| 2 | What are the Sem 5 OS topics? | Process management, threads, scheduling... | cse_sem5_0 |
-| 3 | Which jobs are in Hyderabad? | Software Dev Engineer II, Salesforce Developer | jd_1, jd_3 |
-| 4 | Must have skills for Salesforce Developer? | Salesforce development, Force.com, APEX... | jd_1 |
+| 1 | Which companies want Python skills? | Razorpay, Accenture, Tech Mahindra, Cognizant | jd_extra, jd_final |
+| 2 | What are the Sem 5 OS topics? | Process management, threads, scheduling, deadlocks... | cse_sem5_0 |
+| 3 | Which jobs are in Hyderabad? | Amazon, TCS, Deloitte, Accenture | jd_1, jd_2, jd_3, jd_4 |
+| 4 | Which companies have highest package? | PayTM — highest package | jd_3 |
 | 5 | What is TCS Codevita? | I do not know | (not in corpus) |
+
+### Collection stats
+- Total documents: 50
+- JDs indexed: 25 (5 Amazon + 20 extra companies)
+- Syllabus chunks: 25 (CSE, Mech, ECE, Civil, IT, AIDS, Math, Physics, Management)
