@@ -165,3 +165,36 @@ Gemini invented a complete fake resume "John Doe" from an empty string input. Fi
 - Total documents: 50
 - JDs indexed: 25 (5 Amazon + 20 extra companies)
 - Syllabus chunks: 25 (CSE, Mech, ECE, Civil, IT, AIDS, Math, Physics, Management)
+
+
+
+
+
+
+
+---
+
+## Day 10 Lab 10A — Hello-CrewAI
+
+### Goal
+Built a 2-agent CrewAI system that generates a 1-page TCS Digital placement preparation brief.
+
+### Agents
+1. **Placement Researcher** — prepares factual placement notes with 5 sections.
+2. **Placement Brief Writer** — converts notes into a student-friendly markdown brief.
+
+### Workflow
+
+
+
+Researcher Agent → Writer Agent → Final Markdown Brief
+
+### Files Generated
+- `Day10_MultiAgent.ipynb` — the notebook
+- `tcs_digital_brief.md` — the generated TCS Digital placement brief
+
+### Reflection
+1. The handoff between agents is the design quality — Researcher output becomes Writer input.
+2. `expected_output` is the contract between agents — vague output = poor next agent input.
+3. Verbose mode helps debug multi-agent workflows — you can see exactly what each agent did.
+4. 503 error from Gemini is not code failure — it is cloud-resource limitation. Retry fixes it.
