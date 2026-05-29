@@ -234,3 +234,31 @@ Researcher → Interviewer → Coach → Tracker → JSON Summary
 2. RAG tool integrated into Researcher agent — searches real placement data.
 3. Quota error on 3rd student — free tier limit is 5 requests/minute. Fix: add sleep() between crew runs.
 4. Transcript IS the architecture — read it to understand what each agent did.
+
+
+
+
+
+
+## Day 11 Lab 11A — Ollama Offline + Hybrid Fallback
+
+### Completed
+- ✅ Ollama installed locally
+- ✅ llama3.2 model downloaded
+- ✅ Offline AI tested after Wi-Fi disconnect
+- ✅ Gemini → Groq → Ollama fallback chain implemented
+- ✅ Force-failure testing completed
+- ✅ Local fallback verified
+
+### Demo Proof
+- Wi-Fi disconnect demo recorded
+- Fallback chain outputs captured
+
+### Reflection
+1. First inference is slow because the model loads into RAM.
+2. Ollama is useful for privacy, offline access, and zero per-call cost.
+3. Production AI systems should not depend on a single provider.
+
+### Architecture
+
+Gemini Cloud → Groq Cloud → Ollama Local
