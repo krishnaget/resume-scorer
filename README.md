@@ -184,17 +184,15 @@ Built a 2-agent CrewAI system that generates a 1-page TCS Digital placement prep
 2. **Placement Brief Writer** — converts notes into a student-friendly markdown brief.
 
 ### Workflow
-
-
-
 Researcher Agent → Writer Agent → Final Markdown Brief
 
 ### Files Generated
 - `Day10_MultiAgent.ipynb` — the notebook
 - `tcs_digital_brief.md` — the generated TCS Digital placement brief
+- `day10_lab10a_transcript.txt` — full agent execution transcript
 
 ### Reflection
 1. The handoff between agents is the design quality — Researcher output becomes Writer input.
-2. `expected_output` is the contract between agents — vague output = poor next agent input.
+2. `expected_output` is the contract between agents — vague output means poor next agent input.
 3. Verbose mode helps debug multi-agent workflows — you can see exactly what each agent did.
 4. 503 error from Gemini is not code failure — it is cloud-resource limitation. Retry fixes it.
