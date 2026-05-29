@@ -196,3 +196,41 @@ Researcher Agent → Writer Agent → Final Markdown Brief
 2. `expected_output` is the contract between agents — vague output means poor next agent input.
 3. Verbose mode helps debug multi-agent workflows — you can see exactly what each agent did.
 4. 503 error from Gemini is not code failure — it is cloud-resource limitation. Retry fixes it.
+
+
+
+
+
+---
+
+## Day 10 Sprint 5 — Placement Prep Crew (4-agent)
+
+### Goal
+Built a 4-agent CrewAI placement preparation workflow processing 3 student profiles.
+
+### Agents
+1. **Placement Researcher** — searches RAG knowledge base for company requirements
+2. **Mock Interviewer** — generates 10 personalized interview questions
+3. **Answer Coach** — creates strong sample answer for question 3
+4. **Progress Tracker** — generates JSON progress summary
+
+### Workflow
+Researcher → Interviewer → Coach → Tracker → JSON Summary
+
+### Students Processed
+| Student | Target | Status |
+|---------|--------|--------|
+| Ravi Kumar (CSE) | TCS Digital | ✅ Completed |
+| Sneha Reddy (ECE) | Cognizant | ✅ Completed |
+| Arun Pillai (IT) | Amazon | ⚠️ Quota hit |
+
+### Files Generated
+- `Day10_MultiAgent.ipynb` — the notebook
+- `day10_sprint5_transcripts.json` — JSON transcripts for all 3 students
+- `day10_sprint5_report.md` — markdown report
+
+### Reflection
+1. 4-agent sequential pipeline works — each agent passes output to next.
+2. RAG tool integrated into Researcher agent — searches real placement data.
+3. Quota error on 3rd student — free tier limit is 5 requests/minute. Fix: add sleep() between crew runs.
+4. Transcript IS the architecture — read it to understand what each agent did.
