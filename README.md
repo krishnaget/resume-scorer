@@ -262,3 +262,28 @@ Researcher → Interviewer → Coach → Tracker → JSON Summary
 ### Architecture
 
 Gemini Cloud → Groq Cloud → Ollama Local
+
+
+
+
+
+---
+
+## Final Assessment — Task 2: AI Faculty Assistant
+
+### Application
+AI-powered Faculty Assistant built using Streamlit and Google Gemini 2.5 Flash.
+
+### Explanation
+This application accepts a topic as input and generates structured teaching content including Learning Objectives, Lecture Outline, 5 MCQs with answers, and a Topic Summary. The app uses Gemini API for AI content generation and Streamlit for the user interface. It includes a download button to save generated content as a text file.
+
+### Files
+- `faculty_assistant.py` — source code
+
+### Sample Input
+Topic: Artificial Intelligence in Education
+
+### How to Run
+```bash
+streamlit run faculty_assistant.py
+```
